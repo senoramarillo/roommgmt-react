@@ -2,8 +2,6 @@
 
 <img src="https://i.imgur.com/qFK95sZ.png" width="250" />
 
-[Fullstack Repository](https://github.com/senoramarillo/roommgmt-fullstack)
-
 # Wiki
 * [Information über H2 Database login, scratch.http, Swagger UI, JaCoCo](https://github.com/senoramarillo/roommgmt-exercise/wiki)
 

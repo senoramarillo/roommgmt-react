@@ -14,15 +14,8 @@
 
 [Spring Boot](https://spring.io/projects/spring-boot) version 2.5.0.
 
-# Screenshot
-
-<img src="https://i.imgur.com/yv4wIof.jpg" width="850px" />
-
 # Git Struktur
 * [./src/](src/) - Source code
-
-# Swagger UI
-Link: https://bit.ly/3w77Tri
 
 # Projektbeschreibung
 

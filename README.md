@@ -2,11 +2,6 @@
 
 <img src="https://i.imgur.com/qFK95sZ.png" width="250" />
 
-[![Build Status](https://api.travis-ci.com/senoramarillo/roommgmt-backend.svg?branch=master&status=started)](https://travis-ci.com/github/senoramarillo/roommgmt-backend)
-[![codecov](https://codecov.io/gh/senoramarillo/roommgmt-backend/branch/master/graph/badge.svg)](https://codecov.io/gh/senoramarillo/roommgmt-backend)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-backend&metric=coverage)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-backend)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-backend&metric=sqale_index)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-backend)
-
 [Fullstack Repository](https://github.com/senoramarillo/roommgmt-fullstack)
 
 # Wiki

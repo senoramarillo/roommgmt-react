@@ -6,7 +6,7 @@
 * [Information über H2 Database login, scratch.http, Swagger UI, JaCoCo](https://github.com/senoramarillo/roommgmt-exercise/wiki)
 
 # Architektur
-<img src="https://image.ibb.co/bDRu8x/Image2.png" width="350px" />
+<img src="https://i.imgur.com/h6e6k95.png" width="350px" />
 
 <img src="https://i.imgur.com/OAwZXKy.png" width="800px" />
 

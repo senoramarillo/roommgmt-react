@@ -1,6 +1,6 @@
 # Projekt "Room Management"
 
-<img src="https://imgur.com/qFK95sZ" width="250" />
+<img src="https://i.imgur.com/qFK95sZ.png" width="250" />
 
 [![Build Status](https://api.travis-ci.com/senoramarillo/roommgmt-backend.svg?branch=master&status=started)](https://travis-ci.com/github/senoramarillo/roommgmt-backend)
 [![codecov](https://codecov.io/gh/senoramarillo/roommgmt-backend/branch/master/graph/badge.svg)](https://codecov.io/gh/senoramarillo/roommgmt-backend)

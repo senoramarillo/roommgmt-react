@@ -1,8 +1,8 @@
 # Projekt "Room Management"
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
-
 <img src="https://i.imgur.com/qFK95sZ.png" width="250" />
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
 
 [![Build Status](https://travis-ci.com/senoramarillo/roommgmt-react.svg?branch=main)](https://travis-ci.com/senoramarillo/roommgmt-react)
 [![codecov](https://codecov.io/gh/senoramarillo/roommgmt-react/branch/main/graph/badge.svg?token=WG1PB5HL92)](https://codecov.io/gh/senoramarillo/roommgmt-react)

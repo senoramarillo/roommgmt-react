@@ -3,6 +3,7 @@
 <img src="https://i.imgur.com/qFK95sZ.png" width="250" />
 
 [![Build Status](https://travis-ci.com/senoramarillo/roommgmt-react.svg?branch=main)](https://travis-ci.com/senoramarillo/roommgmt-react)
+[![codecov](https://codecov.io/gh/senoramarillo/roommgmt-react/branch/main/graph/badge.svg?token=WG1PB5HL92)](https://codecov.io/gh/senoramarillo/roommgmt-react)
 
 # Architektur
 <img src="https://i.imgur.com/h6e6k95.png" width="350px" />

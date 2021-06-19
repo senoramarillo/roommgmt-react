@@ -13,7 +13,7 @@
 # Architektur
 <img src="https://i.imgur.com/h6e6k95.png" width="350px" />
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
 
 <img src="https://i.imgur.com/OAwZXKy.png" width="800px" />
 

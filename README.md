@@ -2,8 +2,7 @@
 
 <img src="https://i.imgur.com/qFK95sZ.png" width="250" />
 
-# Wiki
-* [Information über H2 Database login, scratch.http, Swagger UI, JaCoCo](https://github.com/senoramarillo/roommgmt-exercise/wiki)
+[![Build Status](https://travis-ci.com/senoramarillo/roommgmt-react.svg?branch=main)](https://travis-ci.com/senoramarillo/roommgmt-react)
 
 # Architektur
 <img src="https://i.imgur.com/h6e6k95.png" width="350px" />

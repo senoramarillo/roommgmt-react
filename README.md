@@ -14,15 +14,8 @@
 
 [Spring Boot](https://spring.io/projects/spring-boot) version 2.5.0.
 
-# Screenshot
-
-<img src="https://i.imgur.com/yv4wIof.jpg" width="850px" />
-
 # Git Struktur
 * [./src/](src/) - Source code
-
-# Swagger UI
-Link: https://bit.ly/3w77Tri
 
 # Projektbeschreibung
 
@@ -178,3 +171,30 @@ der Main-Klasse `de.dlh.lhind.exercise.roommgmt.RoommmgmtApplication` geklickt w
 
 Das Testen der REST-API erfolgt am besten unter Einsatz von *HTTP Scratch-Files*. Diese können direkt in der IntelliJ
 angelegt werden.
+
+## Available Scripts for React Frontend
+
+In the project directory, you can run:
+
+### `yarn start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

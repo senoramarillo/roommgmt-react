@@ -2,8 +2,6 @@
 
 <img src="https://i.imgur.com/qFK95sZ.png" width="250" />
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
-
 [![Build Status](https://travis-ci.com/senoramarillo/roommgmt-react.svg?branch=main)](https://travis-ci.com/senoramarillo/roommgmt-react)
 [![codecov](https://codecov.io/gh/senoramarillo/roommgmt-react/branch/main/graph/badge.svg?token=WG1PB5HL92)](https://codecov.io/gh/senoramarillo/roommgmt-react)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-react&metric=sqale_index)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
@@ -14,6 +12,8 @@
 
 # Architektur
 <img src="https://i.imgur.com/h6e6k95.png" width="350px" />
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
 
 <img src="https://i.imgur.com/OAwZXKy.png" width="800px" />
 

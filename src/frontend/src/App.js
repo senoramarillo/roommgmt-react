@@ -86,8 +86,16 @@ function App() {
     }
 
     return <Layout style={{minHeight: '100vh'}}>
-        <Sider collapsible collapsed={collapsed}
-               onCollapse={setCollapsed}>
+        <Sider collapsible
+               collapsed={collapsed}
+               onCollapse={() => setCollapsed(!collapsed)}
+               style={{
+                   overflow: "auto",
+                   height: "100vh",
+                   position: "sticky",
+                   top: 0,
+                   left: 0
+               }}>
             <div className="logo"/>
             <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                 <Menu.Item key="1" icon={<PieChartOutlined/>}>

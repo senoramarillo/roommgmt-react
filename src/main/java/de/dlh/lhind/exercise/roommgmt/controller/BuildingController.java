@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = {"/buildings"})
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:4500"})
+@CrossOrigin(origins = {"http://localhost:3000"})
 public class BuildingController {
 
     private final BuildingService buildingService;

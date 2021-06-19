@@ -1,26 +1,26 @@
-#language: java
-#sudo: true
-#jdk:
-#- oraclejdk11
-#addons:
-#  sonarcloud:
-#    organization:
-#    token:
-#      secure:
-#deploy:
-#  provider: heroku
-#  app:
-#  api_key:
-#    secure:
-#  on:
-#    branch: master
-#notifications:
-#  email:
-#    on_success: never
-#    on_failure: never
-#script:
-#- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=
-#before_install:
-#- chmod +x mvnw
-#after_success:
-#- bash <(curl -s https://codecov.io/bash)
+language: java
+sudo: true
+jdk:
+- oraclejdk11
+addons:
+  sonarcloud:
+    organization: senoramarillo
+    token:
+      secure: JgA6quhjzmOCswPkWQao1jgMlh5RIN9meWo0QnZEuZMqXWwGW7y20hHduFhmLh8EJNlAnZybNkpxsp9fr20mXj9WP7zyqh7+NaYO4rBidqHrOL8IVgv6vJMvKI9KnoLaS+VnSNVNn/Ka5KlnRIFskJUj2Ca576+t1wPy/0+yi+69O2XHCwkXqys2g3VhHUNvnX1+RJCi2H1/Ss49cNlhHTOQRmgEk956koFDNRhr4V8EUjM2Ut2uhjTxgiVeKCZISiSjahIRjczFlJvYkJaLBJVAGMbY+aMLDx0D471YUCrcBTwZH6qnKYx/QoczdA32RFukKhv5LsTGDNWTmAIEC0pqObOokNO91FnWZW1rjus/jppkFU2d20pTNBu7BT1XpCQvWWvQqZ+oifMHqzOhczaPK6mpIpLOnb8V10jAodiQDg9HfxarI+Zxo5pOOOQmkCSNgciGyl07fYeZmft1mTFkCoBQbHRuW/HoaWEUV/20eKWUz0SAhe2TZErHm1bDz809xw5ty2BKW9yEYi2AwsoRzn4aEhNsLFUKKnhRabrml3XoisMuRMmmnixn7CMM5IM1G8eFVtJ59TKD8kGuKzuqRWY9ENBdSKAx68DV/aUixPmaa4k+hNv93Ttn9KKo1ZNwqI+b4ZlQANuXYfpqE6wucopVqdn7ljEHAXsnxeM=
+deploy:
+  provider: heroku
+  app: roomgmt-react
+  api_key:
+    secure: TQNoVFQR/bX48E+lN0uHX6JG7KJdRhi6+TRqExFIycZO8uzlnqkBq3OQivNFJ7JdN7pJTdnCO/PQ22Ilv0moORBA2ILx5j565EN9RhmrByLNSjbsBsbBjmz7YnE2TETUldrvp/H8whJX9kSBUebs7lw0fde8g0aGx3P2QnH5TfbJ/fl3hbQNWNXjUW/rpagJVCCn/9V54iZOOj7cXaNSJJTfI65FsZZqxk4EHer1JBqPSk7qmt2vJJ604PnSWZeNGkgqtv6wVMrhC3stBcAQsmDr2ItP3QhJs/P0+5/d9MVeM/08Rzz4TNSN7DEXpeAW7H0SbQwfF7UxcJo95LNkHqVULYbR2BWmGA8IjRjqOCwZzhRYALw7+rPSPFTRXb2j7Py25nOnRUIVB+ul9mhT25N47ryNRWhJFwh7AIQGRovneet5Fu15InghK62qgWAJO1dCVrmQ4mleXtVz60Ka8b4bmUcHY67fG9zs0gTjgN8ojXdefPIWpr8yrPUy5u6cCHGHQ0oc3kqfLSDbHwY5k5jrY1Ouzi24O0uLYGuLRBVmVJ3omKCKXR1DqFg/NUsQjZjFJoxi7PdAhfgcHPC5E+DuQkRRQnaCWqLNyKibPrLjLj3EbJb3FjOL2z8zk9Q03HHQfE/inSZdCiEcM7t1l8Kn1p74XSnwbpt+V3D24J0=
+  on:
+    branch: master
+notifications:
+  email:
+    on_success: never
+    on_failure: never
+script:
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=senoramarillo_roommgmt-react
+before_install:
+- chmod +x mvnw
+after_success:
+- bash <(curl -s https://codecov.io/bash)

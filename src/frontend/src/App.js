@@ -17,9 +17,8 @@ import {
 
 import {
     DesktopOutlined,
-    PieChartOutlined,
-    FileOutlined,
-    TeamOutlined,
+    HomeOutlined,
+    MenuOutlined,
     UserOutlined,
     LoadingOutlined, PlusOutlined
 } from '@ant-design/icons';
@@ -66,6 +65,8 @@ const columns = fetchBuildings => [
         title: 'Public Access',
         dataIndex: 'publicAccess',
         key: 'publicAccess',
+        width: '20%',
+        render : (text) => String(text),
     },
     {
         title: 'Actions',
@@ -95,17 +96,17 @@ function App() {
 
     const fetchBuildings = () =>
         getAllBuildings()
-            .then(res => res.json())
+            .then(response => response.json())
             .then(data => {
                 console.log(data);
                 setBuildings(data);
-            }).catch(err => {
-            console.log(err.response)
-            err.response.json().then(res => {
-                console.log(res);
+            }).catch(error => {
+            console.log(error.response)
+            error.response.json().then(response => {
+                console.log(response);
                 errorNotification(
                     "There was an issue",
-                    `${res.message} [${res.status}] [${res.error}]`
+                    `${response.message} [${response.status}] [${response.error}]`
                 )
             });
         }).finally(() => setFetching(false))
@@ -142,6 +143,7 @@ function App() {
             <BuildingDrawerForm
                 showDrawer={showDrawer}
                 setShowDrawer={setShowDrawer}
+                fetchBuildings={fetchBuildings}
             />
 
             <Table
@@ -180,7 +182,7 @@ function App() {
                }}>
             <div className="logo"/>
             <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                <Menu.Item key="1" icon={<PieChartOutlined/>}>
+                <Menu.Item key="1" icon={<HomeOutlined/>}>
                     Rooms
                 </Menu.Item>
                 <Menu.Item key="2" icon={<DesktopOutlined/>}>
@@ -189,12 +191,9 @@ function App() {
                 <SubMenu key="sub1" icon={<UserOutlined/>} title="User">
                     <Menu.Item key="3">Admin</Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub2" icon={<TeamOutlined/>} title="Team">
-                    <Menu.Item key="6">Team</Menu.Item>
+                <SubMenu key="sub2" icon={<MenuOutlined/>} title="Menu">
+                    <Menu.Item key="6">Configuration</Menu.Item>
                 </SubMenu>
-                <Menu.Item key="9" icon={<FileOutlined/>}>
-                    Files
-                </Menu.Item>
             </Menu>
         </Sider>
         <Layout className="site-layout">

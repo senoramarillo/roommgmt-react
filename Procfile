@@ -1,1 +1,1 @@
-web: java -jar target/roommgmt-exercise-1.0.0-SNAPSHOT.jar $PORT
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar -Dspring.profiles.active=prod

@@ -1,26 +1,52 @@
 import {useState, useEffect} from 'react';
-import {getAllBuildings} from "./client";
+import {deleteBuilding, getAllBuildings} from "./client";
+
 import {
     Layout,
     Menu,
     Breadcrumb,
-    Table, Spin, Empty
+    Table,
+    Spin,
+    Empty,
+    Button,
+    Tag,
+    Badge,
+    Radio,
+    Popconfirm
 } from 'antd';
+
 import {
     DesktopOutlined,
     PieChartOutlined,
     FileOutlined,
     TeamOutlined,
     UserOutlined,
-    LoadingOutlined
+    LoadingOutlined, PlusOutlined
 } from '@ant-design/icons';
 
+import BuildingDrawerForm from "./BuildingDrawerForm";
 import './App.css';
+import {errorNotification, successNotification} from "./Notification";
 
 const {Header, Content, Sider} = Layout;
 const {SubMenu} = Menu;
 
-const columns = [
+const removeBuilding = (buildingId, callback) => {
+    deleteBuilding(buildingId).then(() => {
+        successNotification("Building deleted", `Building with ${buildingId} was deleted`);
+        callback();
+    }).catch(err => {
+        err.response.json().then(res => {
+            console.log(res);
+            errorNotification(
+                "There was an issue",
+                `${res.message} [${res.status}] [${res.error}]`
+            )
+        });
+    })
+}
+
+const columns = fetchBuildings => [
     {
         title: 'Id',
         dataIndex: 'id',
@@ -41,14 +67,31 @@ const columns = [
         dataIndex: 'publicAccess',
         key: 'publicAccess',
     },
+    {
+        title: 'Actions',
+        key: 'actions',
+        render: (text, building) =>
+            <Radio.Group>
+                <Popconfirm
+                    placement='topRight'
+                    title={`Are you sure to delete ${building.description}`}
+                    onConfirm={() => removeBuilding(building.id, fetchBuildings)}
+                    okText='Yes'
+                    cancelText='No'>
+                    <Radio.Button value="small">Delete</Radio.Button>
+                </Popconfirm>
+                <Radio.Button onClick={() => alert("TODO: Implement edit building")} value="small">Edit</Radio.Button>
+            </Radio.Group>
+    }
 ];
 
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+const antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
 
 function App() {
     const [buildings, setBuildings] = useState([]);
     const [collapsed, setCollapsed] = useState(false);
     const [fetching, setFetching] = useState(true);
+    const [showDrawer, setShowDrawer] = useState(false);
 
     const fetchBuildings = () =>
         getAllBuildings()
@@ -56,8 +99,17 @@ function App() {
             .then(data => {
                 console.log(data);
                 setBuildings(data);
-                setFetching(false);
+            }).catch(err => {
+            console.log(err.response)
+            err.response.json().then(res => {
+                console.log(res);
+                errorNotification(
+                    "There was an issue",
+                    `${res.message} [${res.status}] [${res.error}]`
+                )
             });
+        }).finally(() => setFetching(false))
+
 
     useEffect(() => {
         console.log("component is mounted");
@@ -67,22 +119,52 @@ function App() {
     const renderBuildings = () => {
 
         if (fetching) {
-            return <Spin indicator={antIcon} />
+            return <Spin indicator={antIcon}/>
         }
 
         if (buildings.length <= 0) {
-            return <Empty />;
+            return <>
+                <Button
+                    onClick={() => setShowDrawer(!showDrawer)}
+                    type="primary" shape="round" icon={<PlusOutlined/>} size="small">
+                    Add New Student
+                </Button>
+                <BuildingDrawerForm
+                    showDrawer={showDrawer}
+                    setShowDrawer={setShowDrawer}
+                    fetchBuildings={fetchBuildings}
+                />
+                <Empty/>
+            </>
         }
 
-        return <Table
-            dataSource={buildings}
-            columns={columns}
-            bordered
-            title={() => 'Buildings'}
-            pagination={{ pageSize: 50 }}
-            scroll={{ y: 240 }}
-            rowKey={(building) => building.id}
-        />
+        return <>
+            <BuildingDrawerForm
+                showDrawer={showDrawer}
+                setShowDrawer={setShowDrawer}
+            />
+
+            <Table
+                dataSource={buildings}
+                columns={columns(fetchBuildings)}
+                bordered
+                title={() =>
+                    <>
+                        <Tag>Number of buildings</Tag>
+                        <Badge count={buildings.length} className="site-badge-count-4"/>
+                        <br/><br/>
+                        <Button
+                            onClick={() => setShowDrawer(!showDrawer)}
+                            type="primary" shape="round" icon={<PlusOutlined/>} size="small">
+                            Add New Building
+                        </Button>
+                    </>
+                }
+                pagination={{pageSize: 50}}
+                scroll={{y: 500}}
+                rowKey={(building) => building.id}
+            />
+        </>
     }
 
     return <Layout style={{minHeight: '100vh'}}>

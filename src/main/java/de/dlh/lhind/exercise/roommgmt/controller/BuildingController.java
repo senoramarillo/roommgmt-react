@@ -27,7 +27,7 @@ public class BuildingController {
     }
 
     @PostMapping
-    public ResponseEntity<Building> addBuilding(@Valid @RequestBody Building building) {
+    public ResponseEntity<Building> addBuilding(@RequestBody Building building) {
         LOGGER.info("Add Building: {}", building);
         var newBuilding = buildingService.addBuilding(building);
         return new ResponseEntity<>(newBuilding, HttpStatus.CREATED);

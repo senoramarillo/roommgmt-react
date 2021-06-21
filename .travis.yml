@@ -1,0 +1,25 @@
+language: java
+jdk:
+- oraclejdk11
+addons:
+  sonarcloud:
+    organization: senoramarillo
+    token:
+      secure: Jr5Sh+gOfO+8Cmzspe9iKclgz9sjBSd0XFEW3hvMZm93egHyO8iawSzP44iJCIZzqCMgi7ifrzbPtqsgtnAY/jsPYHcS7KLhreXD5ROoG5UrFiRxYv01zclxIgZua6mhvaxHGOi8h2wJ9G4TLCUTG2fwa2jCoiGXI9Gf4+BgUFDM88JzhnWen5kbBYb5ZtKain1QqCPkzPtTLhFwofgL8N2F0I+LW2K4mq12y5oE52S3nH0Fr7aiXdbA79jlgi7iXSN8sJ1oMVdT2S8RNeD3TsxKwTlL+MpLJNw6Yp7Wjon0dVgHnY/TreDxnHnkgEkcBQdOEtDEY3Q0GKUBj1jXU+Rgz1NoqNb0g/hdt7Y9dQ+swsdxvvV0gT43Ojow7N6oOd6/p9HUbiF2wLTepdaLfXLJrgk4TGl85FBnAP3FeEgDxK+YgHNlqvl7Fa+1CEFGf83aVzUeBw5/dtkgdqLai4M99fKa3Vt3Uc5gqs8zbwzdndis4zXpLe7GkC4Mjyk6F2rTV5LrUTgjXzTkBcW911GRrYDRz3vZRP5HNCaa86DmTt7jG50jUYZILP8RN3zf2zhgTOKXT+JbOtSCvXWUoCvK3sv+eDa+n/maIz90aImu8IYc87TQtM33Sh3isgJ0gTlly2c0mGXTXh40L9uxq2Wm1ludAFh/7zXh6BlSDso=
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: main
+notifications:
+  email:
+    on_success: never
+    on_failure: never
+script:
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=senoramarillo_roommgmt-react
+before_install:
+- chmod +x mvnw
+after_success:
+- bash <(curl -s https://codecov.io/bash)

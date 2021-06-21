@@ -1,0 +1,1 @@
+web: java -jar target/roommgmt-exercise-1.0.0-SNAPSHOT.jar $PORT

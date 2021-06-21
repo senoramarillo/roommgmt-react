@@ -8,6 +8,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 @SpringBootApplication
 public class RoommgmtApplication {
@@ -22,7 +23,7 @@ public class RoommgmtApplication {
     public CorsFilter corsFilter() {
         var corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200",  "http://localhost:4500")); //Collections.singletonList("http://localhost:4200"));
+        corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", ACCESS_CONTROL_ALLOW_ORIGIN, "Content-Type",
                 "Accept", "Authorization", "Origin, Accept", "X-Requested-With",
                 "Access-Control-Request-Method", "Access-Control-Request-Headers"));

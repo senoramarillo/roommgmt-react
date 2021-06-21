@@ -1,5 +1,4 @@
 language: java
-sudo: true
 jdk:
 - oraclejdk11
 addons:
@@ -10,7 +9,7 @@ addons:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: PYUoNjj6UxCKnAdyl9I2zw6HQtqc06GVn6SCXe0d0yI2zdHvMn/17ceGmy7xjUfRcScCe1yUBfuWa4WCDc+rQCsyKHxsBofRDkFc4uwMoLTixyppSX5GPfionL7AX/zIIjVCDjpmzTBNgvLlYEgvDZvCD/UI/CoLlkOK7417WwGlqgt4N1q2C0B05dWbhVnGigNhW5SFuNH5Jf6GtH4BUwRU5MRlQmsG9yJLopiwCWB3M5GTOHcqWIcQwMdboCuVQuDwkdDyDJHVX4UQxNvOWbF55bR5okNvHjmr1ISZqNaIGZ6i4y1PTaohGJV6VCmYGRZlLEjRgtW9deyI9uyAR/smAhNgf0X1bu38PBdoeOmRsJ1canoLIbCW4jeAUSWX47Di++MtbAmbHDwEqs1b0UOABZ3t/rwAOlCrgUl4StRjs31GEYUZAZfJMS2UKl8Mr3XKClNRppUQK6gIhIr5PaO6hKNUNAtQghIpKzeHrqtqfhqeS7aLKpDdcVFRZSN7QKFled0vubXkgRHzBcBSSs+czSv38UM58IZIJyLiDEjMOrQpBR0AyUbrhQP+oK2r36vNqjm3GY+R3RRv4CXcVWoAEmOP6tinFdHlsQJLfcj4Ai/7kDzMaZEMyEqjkvElYL682PU98ibJlxr+gAOvoEKowWyJOWRb7F/IYoneB4U=
+  github_token: $GITHUB_TOKEN
   keep_history: true
   on:
     branch: main

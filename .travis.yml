@@ -12,7 +12,7 @@ deploy:
   api_key:
     secure: pchJgB5duLpbIMmqlm3+WiHRIOGzuJsGZzzFAERVF9R1yQT/HieaK4EiY/xe5fVIq6yzP9KqzDU8LHx7UecvDlhf3x7mCAr84cgau7awoNDolbp36Og+/OYLtenrXOHB4xT/u6l1qyqFjQoV8FY+6pqOJdHe2Aie46jX8Rz0bzad3sDCXjyO6RGEst/7PLSdOC9vlngbAZrJGcwq1Ql7YwFkwhUSu9fY58OcUU5cC/QZkY7FYmbIIaer7aJ7LV+UHgsgBe3r9psTiZKdmT514SoH75CXMpjJhjXTXvNdC7nFlQnhSddszwljU1RoK1Cau5XKPjk3EY3wJVBNop8nt4JhS9BNK4X/VIcc8zpZZ95Ta2FAFX13B9NCpnRgthdDTuIW24B7/HMiHVLbwHd4EpdXxiRMOI1NJMxa1LagVnyGRhag/TKZ377xFtypZdzVnzFTpqrIAX41mwvz+yDAmTZWR+WAXoNCpVR8tuXwhiBwEHHSbo52q1PToy4z5JWcdinO02XOx+LqflqwrXQBJeMsRVtzQ3vHogxqrJdgS6tNTXE7JcFWFIn81lIMsJue1PhMRDy854EP3ifNWqXzB+OouF83YAMhFL5CLTpo5RmpCW/RBq/ilyYXm2gidbA7s0AtYPFYwhTxF9K/KX3se8L9Bo4zEswapbpgAor5hYc=
   on:
-    branch: main
+    branch: develop
 notifications:
   email:
     on_success: never

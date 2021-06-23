@@ -162,6 +162,7 @@
                 <version>0.8.7</version>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
@@ -176,6 +177,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
@@ -192,6 +194,7 @@
                     </container>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
@@ -248,6 +251,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>jib-push-to-local</id>
             <activation>
@@ -300,6 +304,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>build-frontend</id>
             <activation>

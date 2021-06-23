@@ -23,6 +23,7 @@ before_install:
 - chmod +x mvnw
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+- mvn clean test jacoco:report coveralls:report
 env:
   global:
     secure: bnb0E0M0eWM9RnG2KZqZuWLq/IBrp0yZoQJ0y/BpWyWxGIy9132gRs6AJP20d4v6o/QmTy5sLmDWaLstll7o1Cnw8/rR77rrhxEXqRW6tBfnd8EcMw1hi49S2U1l+JIA7JY4CNOV1WIy08sGJJHWDN3XSU0rrFvEmqt0RLt+Xnr+OE6dimjbt+8aDd1wZffIqAsL8L30ZbEN/6r+depzb0zD46U5nTfuALKi+iPqpk4M6heV9vsG6rsWorv7442mr+wVLbMx9nCi5h/Ato2NEctTZot7mhMx2DPAt/v5XN85iHzapaaN3/6YhP3pjTABAA231nV6wL1WHIEYRjf/urpRzQA0dM2AhiYsQF1A7OPF0QGbX7zoHFGKeFJ9wKl8rbMWZLUSdvR99fTq6Ww16fYB7nvvQaakawyvXviqvv9kWTufXhm+N6wd+UaxgQ1EmvAl8PPhtcEbyRy4F7aTykuH5S0k7Ta/KShSd+8Eea01FoE2lgiJXdtXmeZHoufe+KON9NJTOe6864CMNpBbiAA7zYCDkH41BnNJPOstZncyOdSRcQ1TsgYDf1TKWRu5nbr9+yFuLwVr+nhb4CtkNuRBLIacVdJpogO4REStFejkVhBPG2F1YWgbs3EByzo9Uofece3QNZka4+XjcLTrxFgs47DQeFO9wPAF1dvPdcM=

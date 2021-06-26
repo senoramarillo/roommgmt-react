@@ -3,7 +3,6 @@ package de.dlh.lhind.exercise.roommgmt.model;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -20,7 +19,6 @@ public class Building {
 
     @Basic(optional = false)
     @Column(unique = true)
-    @NotBlank
     @NotNull
     private String buildingNumber;
 

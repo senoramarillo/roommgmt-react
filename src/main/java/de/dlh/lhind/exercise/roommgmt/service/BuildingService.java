@@ -1,7 +1,5 @@
 package de.dlh.lhind.exercise.roommgmt.service;
 
-import de.dlh.lhind.exercise.roommgmt.exception.BadRequestException;
-import de.dlh.lhind.exercise.roommgmt.exception.BuildingNotFoundException;
 import de.dlh.lhind.exercise.roommgmt.exception.ResourceNotFoundException;
 import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.repository.BuildingRepository;
@@ -23,10 +21,6 @@ public class BuildingService {
     }
 
     public Building addBuilding(Building building) {
-        Boolean existsBuilding = buildingRepository.selectExistsBuildingNumber(building.getBuildingNumber());
-        if (existsBuilding){
-            throw new BadRequestException("Building Number " + building.getBuildingNumber() + "taken");
-        }
         return buildingRepository.save(building);
     }
 
@@ -35,9 +29,6 @@ public class BuildingService {
     }
 
     public void deleteBuildingById(Long id) {
-        if (!buildingRepository.existsById(id)) {
-            throw new BuildingNotFoundException("Building with id " + id + "does not exists");
-        }
         buildingRepository.deleteBuildingById(id);
     }
 

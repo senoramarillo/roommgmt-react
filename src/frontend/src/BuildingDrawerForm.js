@@ -5,7 +5,7 @@ import {useState} from 'react';
 import {successNotification} from "./Notification";
 
 const {Option} = Select;
-const antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 function BuildingDrawerForm({showDrawer, setShowDrawer, fetchBuildings}) {
     const onCLose = () => setShowDrawer(false);
@@ -29,15 +29,7 @@ function BuildingDrawerForm({showDrawer, setShowDrawer, fetchBuildings}) {
                 )
                 fetchBuildings();
             }).catch(err => {
-            console.log(err);
-            err.response.json().then(res => {
-                console.log(res);
-                errorNotification(
-                    "There was an issue",
-                    `${res.message} [${res.status}] [${res.error}]`,
-                    "bottomLeft"
-                )
-            });
+            console.log(err)
         }).finally(() => {
             setSubmitting(false);
         })
@@ -113,7 +105,7 @@ function BuildingDrawerForm({showDrawer, setShowDrawer, fetchBuildings}) {
                 </Col>
             </Row>
             <Row>
-                {submitting && <Spin indicator={antIcon}/>}
+                {submitting && <Spin indicator={antIcon} />}
             </Row>
         </Form>
     </Drawer>

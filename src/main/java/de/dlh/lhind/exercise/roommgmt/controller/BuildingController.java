@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +26,7 @@ public class BuildingController {
     }
 
     @PostMapping
-    public ResponseEntity<Building> addBuilding(@Valid @RequestBody Building building) {
+    public ResponseEntity<Building> addBuilding(@RequestBody Building building) {
         LOGGER.info("Add Building: {}", building);
         var newBuilding = buildingService.addBuilding(building);
         return new ResponseEntity<>(newBuilding, HttpStatus.CREATED);

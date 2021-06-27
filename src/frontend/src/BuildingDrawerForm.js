@@ -43,7 +43,7 @@ function BuildingDrawerForm({showDrawer, setShowDrawer, fetchBuildings}) {
     };
 
     return <Drawer
-        title="Create new student"
+        title="Create new building"
         width={720}
         onClose={onCLose}
         visible={showDrawer}

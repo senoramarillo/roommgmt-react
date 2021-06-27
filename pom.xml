@@ -149,26 +149,27 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>4.3.0</version>
+            </plugin>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.7</version>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-                    <!-- attached to Maven test phase -->
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
@@ -185,6 +186,7 @@
                     </container>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
@@ -241,6 +243,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>jib-push-to-local</id>
             <activation>
@@ -293,6 +296,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>build-frontend</id>
             <activation>
@@ -305,7 +309,7 @@
                         <artifactId>frontend-maven-plugin</artifactId>
                         <!-- Use the latest released version:
                         https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
-                        <version>1.11.2</version>
+                        <version>1.11.3</version>
                         <configuration>
                             <nodeVersion>v4.6.0</nodeVersion>
                             <workingDirectory>src/frontend</workingDirectory>

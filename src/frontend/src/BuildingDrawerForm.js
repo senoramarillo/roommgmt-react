@@ -2,19 +2,14 @@ import {Drawer, Input, Col, Select, Form, Row, Button, Spin} from 'antd';
 import {addNewBuilding} from "./client";
 import {LoadingOutlined} from "@ant-design/icons";
 import {useState} from 'react';
-import {successNotification} from "./Notification";
+import {errorNotification, successNotification} from "./Notification";
 
 const {Option} = Select;
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+const antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
 
 function BuildingDrawerForm({showDrawer, setShowDrawer, fetchBuildings}) {
     const onCLose = () => setShowDrawer(false);
     const [submitting, setSubmitting] = useState(false);
-
-    /*const onFinish = building => {
-        console.log(JSON.stringify(building, null, 2));
-        alert(JSON.stringify(building, null, 2));
-    };*/
 
     const onFinish = building => {
         setSubmitting(true)
@@ -29,7 +24,15 @@ function BuildingDrawerForm({showDrawer, setShowDrawer, fetchBuildings}) {
                 )
                 fetchBuildings();
             }).catch(err => {
-            console.log(err)
+            console.log(err);
+            err.response.json().then(res => {
+                console.log(res);
+                errorNotification(
+                    "There was an issue",
+                    `${res.message} [${res.status}] [${res.error}]`,
+                    "bottomLeft"
+                )
+            });
         }).finally(() => {
             setSubmitting(false);
         })
@@ -40,7 +43,7 @@ function BuildingDrawerForm({showDrawer, setShowDrawer, fetchBuildings}) {
     };
 
     return <Drawer
-        title="Create new student"
+        title="Create new building"
         width={720}
         onClose={onCLose}
         visible={showDrawer}
@@ -105,7 +108,7 @@ function BuildingDrawerForm({showDrawer, setShowDrawer, fetchBuildings}) {
                 </Col>
             </Row>
             <Row>
-                {submitting && <Spin indicator={antIcon} />}
+                {submitting && <Spin indicator={antIcon}/>}
             </Row>
         </Form>
     </Drawer>

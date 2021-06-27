@@ -128,7 +128,7 @@ function App() {
                 <Button
                     onClick={() => setShowDrawer(!showDrawer)}
                     type="primary" shape="round" icon={<PlusOutlined/>} size="small">
-                    Add New Student
+                    Add New Building
                 </Button>
                 <BuildingDrawerForm
                     showDrawer={showDrawer}

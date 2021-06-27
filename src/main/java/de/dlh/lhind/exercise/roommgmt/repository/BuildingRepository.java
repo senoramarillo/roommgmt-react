@@ -12,12 +12,18 @@ import java.util.Optional;
 @Repository
 public interface BuildingRepository extends JpaRepository<Building, Long> {
 
-    @Query("from Building b where b.buildingNumber = (:buildingNumber)")
+    @Query("FROM Building b WHERE b.buildingNumber = (:buildingNumber)")
     Optional<Building> getBuildingById(@Param("buildingNumber") String buildingNumber);
 
-    @Query("from Building b where b.publicAccess = true")
+    @Query("FROM Building b WHERE b.publicAccess = TRUE")
     List<Building> getPublicBuildings();
 
     void deleteBuildingById(Long id);
+
+    @Query("SELECT CASE WHEN COUNT(b) > 0 THEN " +
+            "TRUE ELSE FALSE END " +
+            "FROM Building b " +
+            "WHERE b.buildingNumber = ?1")
+    Boolean selectExistsBuilding(String buildingNumber);
 
 }

@@ -42,7 +42,7 @@ class BuildingControllerTest {
     @DisplayName("Get All Buildings")
     void shouldReturnAllBuildings_whenGetAllBuildings_givenValidGetRequest() throws Exception {
         // given
-        var building = createBuilding();
+        Building building = createBuilding();
         List<Building> buildings = Collections.singletonList(building);
         ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
@@ -59,7 +59,7 @@ class BuildingControllerTest {
     @DisplayName("Add Buildings")
     void shouldCreateBuilding_whenAddBuilding_givenValidPostRequest() throws Exception {
         // given
-        var building = createBuilding();
+        Building building = createBuilding();
 
         // when
         when(mockedBuildingService.addBuilding(any())).thenReturn(building);
@@ -76,7 +76,7 @@ class BuildingControllerTest {
     @DisplayName("Update Buildings")
     void shouldUpdateBuilding_whenUpdateBuilding_givenValidPutRequest() throws Exception {
         // given
-        var building = createBuilding();
+        Building building = createBuilding();
         building.setBuildingNumber(MODIFIED_BUILDING_NUMBER);
 
         // when

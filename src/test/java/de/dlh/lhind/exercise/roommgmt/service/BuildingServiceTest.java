@@ -1,43 +1,63 @@
 package de.dlh.lhind.exercise.roommgmt.service;
 
+import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.repository.BuildingRepository;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.mockito.InjectMocks;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
-@SpringBootTest
-public class BuildingServiceTest {
+@ExtendWith(MockitoExtension.class)
+class BuildingServiceTest {
+
+    private static final Long BUILDING_ID = 1L;
+    public static final String BUILDING_NUMBER = "001";
+    public static final String BUILDING_DESCRIPTION_STRING = "Zentrale";
+    public static final Boolean PUBLIC_ACCESS = true;
 
     @Mock
-    private BuildingRepository mockedBuildingRepository;
-
-    @InjectMocks
+    private BuildingRepository buildingRepository;
     private BuildingService buildingService;
 
     @BeforeEach
-    public void setUp() {
-        buildingService = new BuildingService(mockedBuildingRepository);
+    void setUp() {
+        buildingService = new BuildingService(buildingRepository);
     }
 
-    @Test(expected=NullPointerException.class)
-    @DisplayName("Get all buildings by giving null request")
-    public void shouldCallRepository_whenGetAllBuildings_givenNullRequest() {
-        //when
-        when(mockedBuildingRepository.findAll()).thenReturn(null);
+    @Test
+    @DisplayName("Add new building")
+    void shouldAdd_whenAddBuilding_givenValidBuilding() {
+        // given
+        Building building = new Building();
+        building.setId(BUILDING_ID);
+        building.setBuildingNumber(BUILDING_NUMBER);
+        building.setDescription(BUILDING_DESCRIPTION_STRING);
+        building.setPublicAccess(PUBLIC_ACCESS);
 
-        // Execute the service call
-        var result = buildingService.getAllBuildings();
+        // when
+        buildingService.addBuilding(building);
 
-        // Assert the response
-        assertThat(result).isNull();
-        verify(mockedBuildingRepository).findAll();
+        // then
+        ArgumentCaptor<Building> buildingArgumentCaptor = ArgumentCaptor.forClass(Building.class);
+        verify(buildingRepository).save(buildingArgumentCaptor.capture());
+        Building capturedBuilding = buildingArgumentCaptor.getValue();
+        assertThat(capturedBuilding).isEqualTo(building);
+    }
+
+    @Test
+    @DisplayName("Get all buildings")
+    void shouldFindAll_whenGetAllBuildings() {
+        // when
+        buildingService.getAllBuildings();
+
+        // then
+        verify(buildingRepository).findAll();
     }
 
 }

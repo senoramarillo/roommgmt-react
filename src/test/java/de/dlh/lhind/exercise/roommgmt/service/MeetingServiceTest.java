@@ -1,40 +1,35 @@
 package de.dlh.lhind.exercise.roommgmt.service;
 
 import de.dlh.lhind.exercise.roommgmt.repository.MeetingRepository;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.mockito.InjectMocks;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
-@SpringBootTest
-public class MeetingServiceTest {
+@ExtendWith(MockitoExtension.class)
+class MeetingServiceTest {
 
     @Mock
-    private MeetingRepository mockedMeetingRepository;
-
-    @InjectMocks
+    private MeetingRepository meetingRepository;
     private MeetingService meetingService;
 
     @BeforeEach
-    public void setUp() {
-        meetingService = new MeetingService(mockedMeetingRepository);
+    void setUp() {
+        meetingService = new MeetingService(meetingRepository);
     }
 
-    @Test(expected=NullPointerException.class)
-    @DisplayName("Get all meeting by giving null request")
-    public void shouldCallRepository_whenGetAllMeetings_givenNullObject() {
+    @Test
+    @DisplayName("Get all meetings")
+    void shouldFindAll_whenGetAllRooms() {
         // when
-        when(mockedMeetingRepository.findAll()).thenReturn(null);
-        var result = meetingService.getAllMeetings();
+        meetingService.getAllMeetings();
 
         // then
-        assertThat(result).isNull();
-        verify(mockedMeetingRepository).findAll();
+        verify(meetingRepository).findAll();
     }
+
 }

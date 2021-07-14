@@ -23,15 +23,15 @@ public class MeetingService {
         return meetingRepository.save(meeting);
     }
 
-    public Meeting updateMeeting(Meeting building) {
-        return meetingRepository.save(building);
+    public Meeting updateMeeting(Meeting meeting) {
+        return meetingRepository.save(meeting);
     }
 
     public void deleteMeetingById(Long id) {
-        meetingRepository.deleteMeetingById(id);
+        meetingRepository.deleteById(id);
     }
 
-    public List<Meeting> getAllMeetings() {
+    public List<Meeting> findAllMeetings() {
         return meetingRepository.findAll();
     }
 

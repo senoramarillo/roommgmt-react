@@ -13,17 +13,15 @@ import java.util.Optional;
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
     @Query("FROM Room r WHERE r.roomNumber = (:roomNumber)")
-    Optional<Room> getRoomById(@Param("roomNumber") String roomNumber);
+    Optional<Room> findByRoomNumber(@Param("roomNumber") String roomNumber);
 
     @Query("FROM Building b, Room r WHERE b.buildingNumber = (:buildingNumber) AND r.roomNumber = (:roomNumber)")
-    Optional<Object> getBuildingAndRoomById(String buildingNumber, String roomNumber);
+    Optional<Object> findByBuildingAndRoomNumber(String buildingNumber, String roomNumber);
 
     @Query(value = "SELECT r FROM Room r JOIN Building b ON b.id = r.building.id WHERE b.buildingNumber = (:buildingNumber)")
-    List<Object> geAllRoomsOfBuilding(String buildingNumber);
+    List<Object> findAllRoomsOfBuilding(String buildingNumber);
 
     @Query("SELECT r FROM Room r JOIN Building b ON b.id = r.building.id WHERE b.publicAccess = true")
-    List<Room> getPublicRooms();
-
-    void deleteRoomById(Long id);
+    List<Room> findPublicRooms();
 
 }

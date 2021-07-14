@@ -29,30 +29,30 @@ public class RoomService {
     }
 
     public void deleteRoomById(Long id) {
-        roomRepository.deleteRoomById(id);
+        roomRepository.deleteById(id);
     }
 
-    public Room getRoomById(String roomNumber) {
-        return roomRepository.getRoomById(roomNumber)
+    public Room findByRoomNumber(String roomNumber) {
+        return roomRepository.findByRoomNumber(roomNumber)
                 .orElseThrow(() -> new ResourceNotFoundException("Room by number " + roomNumber + " was not found"));
     }
 
-    public List<Room> getAllRooms() {
+    public List<Room> findAllRooms() {
         return roomRepository.findAll();
     }
 
-    public List<Object> geAllRoomsOfBuilding(String buildingNumber) {
-        return roomRepository.geAllRoomsOfBuilding(buildingNumber);
+    public List<Object> findAllRoomsOfBuilding(String buildingNumber) {
+        return roomRepository.findAllRoomsOfBuilding(buildingNumber);
     }
 
-    public Object getBuildingAndRoomById(String buildingNumber, String roomNumber) {
-        return roomRepository.getBuildingAndRoomById(buildingNumber, roomNumber)
+    public Object findByBuildingAndRoomNumber(String buildingNumber, String roomNumber) {
+        return roomRepository.findByBuildingAndRoomNumber(buildingNumber, roomNumber)
                 .orElseThrow(() -> new ResourceNotFoundException
                         ("Building or Room by buildingNumber " + buildingNumber + " roomNumber: " + roomNumber + " was not found"));
     }
 
-    public List<Room> getPublicRooms() {
-        return roomRepository.getPublicRooms();
+    public List<Room> findPublicRooms() {
+        return roomRepository.findPublicRooms();
     }
 
 }

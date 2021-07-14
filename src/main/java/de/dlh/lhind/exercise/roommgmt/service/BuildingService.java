@@ -17,6 +17,7 @@ public class BuildingService {
 
     private final BuildingRepository buildingRepository;
 
+    //TODO Business Logic
     @Autowired
     public BuildingService(BuildingRepository buildingRepository) {
         this.buildingRepository = buildingRepository;
@@ -38,20 +39,20 @@ public class BuildingService {
         if (!buildingRepository.existsById(id)) {
             throw new NotFoundException("Building with id " + id + "does not exists");
         }
-        buildingRepository.deleteBuildingById(id);
+        buildingRepository.deleteById(id);
     }
 
     public List<Building> getAllBuildings() {
         return buildingRepository.findAll();
     }
 
-    public Building getBuildingById(String buildingNumber) {
-        return buildingRepository.getBuildingById(buildingNumber)
+    public Building findByBuildingNumber(String buildingNumber) {
+        return buildingRepository.findByBuildingNumber(buildingNumber)
                 .orElseThrow(() -> new ResourceNotFoundException("Building by number " + buildingNumber + " was not found"));
     }
 
-    public List<Building> getPublicBuildings() {
-        return buildingRepository.getPublicBuildings();
+    public List<Building> findPublicBuildings() {
+        return buildingRepository.findPublicAccessIsTrue();
     }
 
 }

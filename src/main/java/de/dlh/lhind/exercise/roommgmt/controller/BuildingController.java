@@ -60,16 +60,16 @@ public class BuildingController {
     }
 
     @GetMapping("/{buildingNumber}")
-    public ResponseEntity<Building> getBuildingById(@PathVariable("buildingNumber") String buildingNumber) {
+    public ResponseEntity<Building> findByBuildNumber(@PathVariable("buildingNumber") String buildingNumber) {
         LOGGER.info("Get Building by buildingNumber: {}", buildingNumber);
-        var building = buildingService.getBuildingById(buildingNumber);
+        var building = buildingService.findByBuildingNumber(buildingNumber);
         return new ResponseEntity<>(building, HttpStatus.OK);
     }
 
     @GetMapping("/public")
-    public ResponseEntity<List<Building>> getPublicBuildings() {
+    public ResponseEntity<List<Building>> findPublicBuildings() {
         LOGGER.info("Get All Public Buildings");
-        List<Building> building = buildingService.getPublicBuildings();
+        List<Building> building = buildingService.findPublicBuildings();
         return new ResponseEntity<>(building, HttpStatus.OK);
     }
 

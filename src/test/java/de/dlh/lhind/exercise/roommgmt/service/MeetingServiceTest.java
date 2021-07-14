@@ -26,7 +26,7 @@ class MeetingServiceTest {
     @DisplayName("Get all meetings")
     void shouldFindAll_whenGetAllRooms() {
         // when
-        meetingService.getAllMeetings();
+        meetingService.findAllMeetings();
 
         // then
         verify(meetingRepository).findAll();

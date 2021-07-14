@@ -53,7 +53,7 @@ class RoomControllerTest {
         ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
         // when
-        when(mockedRoomService.getAllRooms()).thenReturn(rooms);
+        when(mockedRoomService.findAllRooms()).thenReturn(rooms);
 
         // then
         mockMvc.perform(get(ROOM_URL))

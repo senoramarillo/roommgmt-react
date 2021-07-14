@@ -47,9 +47,9 @@ public class MeetingController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Meeting>> getAllMeetings() {
+    public ResponseEntity<List<Meeting>> findAllMeetings() {
         LOGGER.info("Get All Meetings");
-        List<Meeting> meetings = meetingService.getAllMeetings();
+        List<Meeting> meetings = meetingService.findAllMeetings();
         return new ResponseEntity<>(meetings, HttpStatus.OK);
     }
 

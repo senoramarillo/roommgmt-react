@@ -69,7 +69,7 @@ class RoomServiceTest {
     @DisplayName("Get all rooms")
     void shouldFindAll_whenGetAllRooms() {
         // when
-        roomService.getAllRooms();
+        roomService.findAllRooms();
 
         // then
         verify(roomRepository).findAll();

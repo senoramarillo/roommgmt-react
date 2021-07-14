@@ -1,6 +1,7 @@
 package de.dlh.lhind.exercise.roommgmt.model;
 
 import lombok.*;
+import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -20,9 +21,11 @@ public class Room {
     @NotNull
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @NaturalId
+    @ManyToOne(optional = false)
     private Building building;
 
+    @NaturalId
     @Basic(optional = false)
     // @Column(unique = true)
     @NotNull

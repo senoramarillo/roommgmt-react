@@ -19,7 +19,7 @@ public class Meeting {
     @NotNull
     private Long id;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
     @NotNull
     private Room room;
 

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rooms")
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:4500"})
 public class RoomController {
 
@@ -25,21 +24,21 @@ public class RoomController {
         this.roomService = roomService;
     }
 
-    @PostMapping
+    @PostMapping("/rooms")
     public ResponseEntity<Room> addRoom(@RequestBody Room room) {
         LOGGER.info("Add Room: {}", room);
         var newRoom = roomService.addRoom(room);
         return new ResponseEntity<>(newRoom, HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/rooms")
     public ResponseEntity<Room> updateRoom(@RequestBody Room room) {
         LOGGER.info("Update Room: {}", room);
         var updateRoom = roomService.updateRoom(room);
         return new ResponseEntity<>(updateRoom, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/rooms/{id}")
     public ResponseEntity<Room> deleteRoomById(@PathVariable("id") Long id) {
         LOGGER.info("Delete Room: {}", id);
         roomService.deleteRoomById(id);
@@ -51,39 +50,39 @@ public class RoomController {
             response = Room.class,
             responseContainer = "List",
             produces = "application/json")
-    @GetMapping
-    public ResponseEntity<List<Room>> getAllRooms() {
+    @GetMapping("/rooms")
+    public ResponseEntity<List<Room>> findAllRooms() {
         LOGGER.info("Get All Rooms");
-        List<Room> rooms =  roomService.getAllRooms();
+        List<Room> rooms =  roomService.findAllRooms();
         return new ResponseEntity<>(rooms, HttpStatus.OK);
     }
 
-    @GetMapping("/{roomNumber}")
-    public ResponseEntity<Room> getRoomById(@PathVariable("roomNumber") String roomNumber) {
+    @GetMapping("/rooms/{roomNumber}")
+    public ResponseEntity<Room> findByRoomNumber(@PathVariable("roomNumber") String roomNumber) {
         LOGGER.info("Get Room by roomNumber: {}", roomNumber);
-        var room =  roomService.getRoomById(roomNumber);
+        var room =  roomService.findByRoomNumber(roomNumber);
         return new ResponseEntity<>(room, HttpStatus.OK);
     }
 
     @GetMapping("/buildings/{buildingNumber}/rooms")
-    public ResponseEntity<List<Object>> geAllRoomsOfBuilding(@PathVariable("buildingNumber") String buildingNumber) {
+    public ResponseEntity<List<Object>> findAllRoomsOfBuilding(@PathVariable("buildingNumber") String buildingNumber) {
         LOGGER.info("Get All Rooms of Building");
-        var room = roomService.geAllRoomsOfBuilding(buildingNumber);
+        var room = roomService.findAllRoomsOfBuilding(buildingNumber);
         return new ResponseEntity<>(room, HttpStatus.OK);
     }
 
     @GetMapping("/buildings/{buildingNumber}/rooms/{roomNumber}")
-    public ResponseEntity<Object> getBuildingAndRoomById(@PathVariable("buildingNumber") String buildingNumber,
-                                                       @PathVariable("roomNumber") String roomNumber) {
+    public ResponseEntity<Object> findByBuildingAndRoomNumber(@PathVariable("buildingNumber") String buildingNumber,
+                                                              @PathVariable("roomNumber") String roomNumber) {
         LOGGER.info("Get Building by buildingNumber and roomNumber: {}{}", buildingNumber, roomNumber);
-        var building = roomService.getBuildingAndRoomById(buildingNumber, roomNumber);
+        var building = roomService.findByBuildingAndRoomNumber(buildingNumber, roomNumber);
         return new ResponseEntity<>(building, HttpStatus.OK);
     }
 
-    @GetMapping("/public")
-    public ResponseEntity<List<Room>> getPublicBuildings() {
+    @GetMapping("/rooms/public")
+    public ResponseEntity<List<Room>> findPublicRooms() {
         LOGGER.info("Get All Public Rooms");
-        List<Room> rooms = roomService.getPublicRooms();
+        List<Room> rooms = roomService.findPublicRooms();
         return new ResponseEntity<>(rooms, HttpStatus.OK);
     }
 

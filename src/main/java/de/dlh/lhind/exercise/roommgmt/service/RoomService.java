@@ -41,11 +41,11 @@ public class RoomService {
         return roomRepository.findAll();
     }
 
-    public List<Object> findAllRoomsOfBuilding(String buildingNumber) {
+    public List<Room> findAllRoomsOfBuilding(String buildingNumber) {
         return roomRepository.findAllRoomsOfBuilding(buildingNumber);
     }
 
-    public Object findByBuildingAndRoomNumber(String buildingNumber, String roomNumber) {
+    public Room findByBuildingAndRoomNumber(String buildingNumber, String roomNumber) {
         return roomRepository.findByBuildingAndRoomNumber(buildingNumber, roomNumber)
                 .orElseThrow(() -> new ResourceNotFoundException
                         ("Building or Room by buildingNumber " + buildingNumber + " roomNumber: " + roomNumber + " was not found"));

@@ -65,14 +65,14 @@ public class RoomController {
     }
 
     @GetMapping("/buildings/{buildingNumber}/rooms")
-    public ResponseEntity<List<Object>> findAllRoomsOfBuilding(@PathVariable("buildingNumber") String buildingNumber) {
+    public ResponseEntity<List<Room>> findAllRoomsOfBuilding(@PathVariable("buildingNumber") String buildingNumber) {
         LOGGER.info("Get All Rooms of Building");
         var room = roomService.findAllRoomsOfBuilding(buildingNumber);
         return new ResponseEntity<>(room, HttpStatus.OK);
     }
 
     @GetMapping("/buildings/{buildingNumber}/rooms/{roomNumber}")
-    public ResponseEntity<Object> findByBuildingAndRoomNumber(@PathVariable("buildingNumber") String buildingNumber,
+    public ResponseEntity<Room> findByBuildingAndRoomNumber(@PathVariable("buildingNumber") String buildingNumber,
                                                               @PathVariable("roomNumber") String roomNumber) {
         LOGGER.info("Get Building by buildingNumber and roomNumber: {}{}", buildingNumber, roomNumber);
         var building = roomService.findByBuildingAndRoomNumber(buildingNumber, roomNumber);

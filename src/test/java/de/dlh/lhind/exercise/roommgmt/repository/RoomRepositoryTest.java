@@ -1,23 +1,24 @@
-package de.dlh.lhind.exercise.roommgmt.service;
+package de.dlh.lhind.exercise.roommgmt.repository;
 
 import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.model.Room;
-import de.dlh.lhind.exercise.roommgmt.repository.RoomRepository;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
 
-@ExtendWith(MockitoExtension.class)
-class RoomServiceTest {
+@RunWith(SpringRunner.class)
+@DataJpaTest
+public class RoomRepositoryTest {
 
-    private static final Long BUILDING_ID = 1L;
+    private static final Long BUILDING_ID = -1L;
     public static final String BUILDING_NUMBER = "001";
     public static final String BUILDING_DESCRIPTION_STRING = "Zentrale";
     public static final Boolean PUBLIC_ACCESS = true;
@@ -27,18 +28,16 @@ class RoomServiceTest {
     public static final Integer ROOM_SEATS = 10;
     public static final Boolean PROJECTOR_PRESENT = true;
 
-    @Mock
+    @Autowired
     private RoomRepository roomRepository;
-    private RoomService roomService;
 
-    @BeforeEach
-    void setUp() {
-        roomService = new RoomService(roomRepository);
+    @AfterEach
+    void tearDown() {
+        roomRepository.deleteAll();
     }
 
     @Test
-    @DisplayName("Add new room")
-    void shouldAdd_whenAddRoom_givenValidRoom() {
+    public void shouldCheck_whenFindByRoomNumber_givenValidRoomNumber() {
         // given
         Building building = new Building();
         Room room = new Room();
@@ -54,24 +53,26 @@ class RoomServiceTest {
         room.setSeats(ROOM_SEATS);
         room.setProjectorPresent(PROJECTOR_PRESENT);
 
+
+        roomRepository.save(room);
+
         // when
-        roomService.addRoom(room);
+        Optional<Room> expected = roomRepository.findByRoomNumber(ROOM_NUMBER);
 
         // then
-        ArgumentCaptor<Room> roomArgumentCaptor = ArgumentCaptor.forClass(Room.class);
-        verify(roomRepository).save(roomArgumentCaptor.capture());
-        Room capturedRoom = roomArgumentCaptor.getValue();
-        assertThat(capturedRoom).isEqualTo(room);
+        assertThat(expected).isPresent();
     }
 
     @Test
-    @DisplayName("Get all rooms")
-    void shouldFindAll_whenGetAllRooms() {
+    public void shouldCheck_whenFindByRoomNumber_givenInvalidRoomNumber() {
+        // given
+        String INVALID_ROOM_NUMBER = "002";
+
         // when
-        roomService.findAllRooms();
+        Optional<Room> expected = roomRepository.findByRoomNumber(INVALID_ROOM_NUMBER);
 
         // then
-        verify(roomRepository).findAll();
+        assertThat(expected).isNotPresent();
     }
 
 }

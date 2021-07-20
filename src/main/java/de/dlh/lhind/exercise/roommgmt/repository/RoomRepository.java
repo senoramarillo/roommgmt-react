@@ -16,10 +16,10 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     Optional<Room> findByRoomNumber(@Param("roomNumber") String roomNumber);
 
     @Query("FROM Building b, Room r WHERE b.buildingNumber = (:buildingNumber) AND r.roomNumber = (:roomNumber)")
-    Optional<Object> findByBuildingAndRoomNumber(String buildingNumber, String roomNumber);
+    Optional<Room> findByBuildingAndRoomNumber(String buildingNumber, String roomNumber);
 
     @Query(value = "SELECT r FROM Room r JOIN Building b ON b.id = r.building.id WHERE b.buildingNumber = (:buildingNumber)")
-    List<Object> findAllRoomsOfBuilding(String buildingNumber);
+    List<Room> findAllRoomsOfBuilding(String buildingNumber);
 
     @Query("SELECT r FROM Room r JOIN Building b ON b.id = r.building.id WHERE b.publicAccess = true")
     List<Room> findPublicRooms();

@@ -3,11 +3,10 @@ package de.dlh.lhind.exercise.roommgmt.service;
 import de.dlh.lhind.exercise.roommgmt.exception.ResourceNotFoundException;
 import de.dlh.lhind.exercise.roommgmt.model.Room;
 import de.dlh.lhind.exercise.roommgmt.repository.RoomRepository;
+import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional
@@ -34,7 +33,9 @@ public class RoomService {
 
     public Room findByRoomNumber(String roomNumber) {
         return roomRepository.findByRoomNumber(roomNumber)
-                .orElseThrow(() -> new ResourceNotFoundException("Room by number " + roomNumber + " was not found"));
+            .orElseThrow(
+                () -> new ResourceNotFoundException(
+                    "Room by number " + roomNumber + " was not found"));
     }
 
     public List<Room> findAllRooms() {
@@ -47,8 +48,10 @@ public class RoomService {
 
     public Room findByBuildingAndRoomNumber(String buildingNumber, String roomNumber) {
         return roomRepository.findByBuildingAndRoomNumber(buildingNumber, roomNumber)
-                .orElseThrow(() -> new ResourceNotFoundException
-                        ("Building or Room by buildingNumber " + buildingNumber + " roomNumber: " + roomNumber + " was not found"));
+            .orElseThrow(() -> new ResourceNotFoundException
+                ("Building or Room by buildingNumber " + buildingNumber + " roomNumber: "
+                    + roomNumber
+                    + " was not found"));
     }
 
     public List<Room> findPublicRooms() {

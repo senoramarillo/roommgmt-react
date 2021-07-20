@@ -2,11 +2,10 @@ package de.dlh.lhind.exercise.roommgmt.service;
 
 import de.dlh.lhind.exercise.roommgmt.model.Meeting;
 import de.dlh.lhind.exercise.roommgmt.repository.MeetingRepository;
+import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional

@@ -1,12 +1,20 @@
 package de.dlh.lhind.exercise.roommgmt.model;
 
-import lombok.*;
-import org.hibernate.annotations.NaturalId;
-import org.hibernate.validator.constraints.Range;
-
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.NaturalId;
+import org.hibernate.validator.constraints.Range;
 
 @Getter
 @Setter
@@ -41,11 +49,11 @@ public class Room {
     private Boolean projectorPresent;
 
     public Room(Building building,
-                @NotNull String roomNumber,
-                @Range(min = 1, max = 9999, message = "Amount of seats must be between 1 and 9999")
-                @NotNull
-                @Valid Integer seats,
-                Boolean projectorPresent) {
+        @NotNull String roomNumber,
+        @Range(min = 1, max = 9999, message = "Amount of seats must be between 1 and 9999")
+        @NotNull
+        @Valid Integer seats,
+        Boolean projectorPresent) {
         this.building = building;
         this.roomNumber = roomNumber;
         this.seats = seats;

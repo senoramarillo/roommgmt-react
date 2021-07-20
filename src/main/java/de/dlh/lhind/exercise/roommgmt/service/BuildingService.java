@@ -5,11 +5,10 @@ import de.dlh.lhind.exercise.roommgmt.exception.NotFoundException;
 import de.dlh.lhind.exercise.roommgmt.exception.ResourceNotFoundException;
 import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.repository.BuildingRepository;
+import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional
@@ -24,9 +23,11 @@ public class BuildingService {
     }
 
     public Building addBuilding(Building building) {
-        Boolean existsBuilding = buildingRepository.selectExistsBuilding(building.getBuildingNumber());
-        if (Boolean.TRUE.equals(existsBuilding)){
-            throw new BadRequestException("Building Number " + building.getBuildingNumber() + "taken");
+        Boolean existsBuilding = buildingRepository
+            .selectExistsBuilding(building.getBuildingNumber());
+        if (Boolean.TRUE.equals(existsBuilding)) {
+            throw new BadRequestException(
+                "Building Number " + building.getBuildingNumber() + "taken");
         }
         return buildingRepository.save(building);
     }
@@ -48,7 +49,8 @@ public class BuildingService {
 
     public Building findByBuildingNumber(String buildingNumber) {
         return buildingRepository.findByBuildingNumber(buildingNumber)
-                .orElseThrow(() -> new ResourceNotFoundException("Building by number " + buildingNumber + " was not found"));
+            .orElseThrow(() -> new ResourceNotFoundException(
+                "Building by number " + buildingNumber + " was not found"));
     }
 
     public List<Building> findPublicBuildings() {

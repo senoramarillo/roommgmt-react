@@ -1,5 +1,6 @@
 package de.dlh.lhind.exercise.roommgmt.repository;
 
+import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.model.Room;
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +16,7 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     Optional<Room> findByRoomNumber(@Param("roomNumber") String roomNumber);
 
     @Query("FROM Building b, Room r WHERE b.buildingNumber = (:buildingNumber) AND r.roomNumber = (:roomNumber)")
-    Optional<Room> findByBuildingAndRoomNumber(String buildingNumber, String roomNumber);
+    Optional<Building> findByBuildingAndRoomNumber(String buildingNumber, String roomNumber);
 
     @Query(value = "SELECT r FROM Room r JOIN Building b ON b.id = r.building.id WHERE b.buildingNumber = (:buildingNumber)")
     List<Room> findAllRoomsOfBuilding(String buildingNumber);

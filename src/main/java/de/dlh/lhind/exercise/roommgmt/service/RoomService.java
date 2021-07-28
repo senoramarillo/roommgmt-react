@@ -1,6 +1,7 @@
 package de.dlh.lhind.exercise.roommgmt.service;
 
 import de.dlh.lhind.exercise.roommgmt.exception.ResourceNotFoundException;
+import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.model.Room;
 import de.dlh.lhind.exercise.roommgmt.repository.RoomRepository;
 import java.util.List;
@@ -46,7 +47,7 @@ public class RoomService {
         return roomRepository.findAllRoomsOfBuilding(buildingNumber);
     }
 
-    public Room findByBuildingAndRoomNumber(String buildingNumber, String roomNumber) {
+    public Building findByBuildingAndRoomNumber(String buildingNumber, String roomNumber) {
         return roomRepository.findByBuildingAndRoomNumber(buildingNumber, roomNumber)
             .orElseThrow(() -> new ResourceNotFoundException
                 ("Building or Room by buildingNumber " + buildingNumber + " roomNumber: "

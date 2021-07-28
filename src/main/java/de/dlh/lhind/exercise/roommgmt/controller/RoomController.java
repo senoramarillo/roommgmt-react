@@ -1,5 +1,6 @@
 package de.dlh.lhind.exercise.roommgmt.controller;
 
+import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.model.Room;
 import de.dlh.lhind.exercise.roommgmt.service.RoomService;
 import io.swagger.annotations.ApiOperation;
@@ -79,7 +80,7 @@ public class RoomController {
     }
 
     @GetMapping("/buildings/{buildingNumber}/rooms/{roomNumber}")
-    public ResponseEntity<Room> findByBuildingAndRoomNumber(
+    public ResponseEntity<Building> findByBuildingAndRoomNumber(
         @PathVariable("buildingNumber") String buildingNumber,
         @PathVariable("roomNumber") String roomNumber) {
         LOGGER.info("Get Building by buildingNumber and roomNumber: {}{}", buildingNumber,

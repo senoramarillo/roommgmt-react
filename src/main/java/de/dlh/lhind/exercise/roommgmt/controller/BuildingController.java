@@ -3,23 +3,30 @@ package de.dlh.lhind.exercise.roommgmt.controller;
 import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.service.BuildingService;
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
+import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = {"/buildings"})
 @CrossOrigin(origins = {"http://localhost:3000"})
 public class BuildingController {
 
-    private final BuildingService buildingService;
     private static final Logger LOGGER = LoggerFactory.getLogger(BuildingController.class);
+    private final BuildingService buildingService;
 
     @Autowired
     public BuildingController(BuildingService buildingService) {
@@ -48,10 +55,10 @@ public class BuildingController {
     }
 
     @ApiOperation(value = "Retrieves all buildings",
-            notes = "A list of buildings",
-            response = Building.class,
-            responseContainer = "List",
-            produces = "application/json")
+        notes = "A list of buildings",
+        response = Building.class,
+        responseContainer = "List",
+        produces = "application/json")
     @GetMapping
     public ResponseEntity<List<Building>> getAllBuildings() {
         LOGGER.info("Get All Buildings");
@@ -60,16 +67,17 @@ public class BuildingController {
     }
 
     @GetMapping("/{buildingNumber}")
-    public ResponseEntity<Building> getBuildingById(@PathVariable("buildingNumber") String buildingNumber) {
+    public ResponseEntity<Building> findByBuildNumber(
+        @PathVariable("buildingNumber") String buildingNumber) {
         LOGGER.info("Get Building by buildingNumber: {}", buildingNumber);
-        var building = buildingService.getBuildingById(buildingNumber);
+        var building = buildingService.findByBuildingNumber(buildingNumber);
         return new ResponseEntity<>(building, HttpStatus.OK);
     }
 
     @GetMapping("/public")
-    public ResponseEntity<List<Building>> getPublicBuildings() {
+    public ResponseEntity<List<Building>> findPublicBuildings() {
         LOGGER.info("Get All Public Buildings");
-        List<Building> building = buildingService.getPublicBuildings();
+        List<Building> building = buildingService.findPublicBuildings();
         return new ResponseEntity<>(building, HttpStatus.OK);
     }
 

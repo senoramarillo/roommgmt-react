@@ -1,9 +1,21 @@
 package de.dlh.lhind.exercise.roommgmt.controller;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.service.BuildingService;
+import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,31 +24,19 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Collections;
-import java.util.List;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @WebMvcTest(controllers = BuildingController.class)
 class BuildingControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private BuildingService mockedBuildingService;
-
-    private static final Long BUILDING_ID = 1L;
     public static final String BUILDING_NUMBER = "001";
     public static final String MODIFIED_BUILDING_NUMBER = "002";
     public static final String BUILDING_DESCRIPTION_STRING = "Zentrale";
     public static final Boolean PUBLIC_ACCESS = true;
     public static final String BUILDING_URL = "/buildings/";
+    private static final Long BUILDING_ID = 1L;
+    @Autowired
+    private MockMvc mockMvc;
+    @MockBean
+    private BuildingService mockedBuildingService;
 
     @Test
     @DisplayName("Get All Buildings")
@@ -51,8 +51,8 @@ class BuildingControllerTest {
 
         // then
         mockMvc.perform(get(BUILDING_URL))
-                .andExpect(status().isOk())
-                .andExpect(content().json(objectWriter.writeValueAsString(buildings)));
+            .andExpect(status().isOk())
+            .andExpect(content().json(objectWriter.writeValueAsString(buildings)));
     }
 
     @Test
@@ -67,9 +67,9 @@ class BuildingControllerTest {
 
         // then
         mockMvc.perform(post(BUILDING_URL)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectWriter.writeValueAsString(building))).andExpect(status().isCreated())
-                .andExpect(content().json(objectWriter.writeValueAsString(building)));
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectWriter.writeValueAsString(building))).andExpect(status().isCreated())
+            .andExpect(content().json(objectWriter.writeValueAsString(building)));
     }
 
     @Test
@@ -85,8 +85,8 @@ class BuildingControllerTest {
 
         // then
         mockMvc.perform(put(BUILDING_URL).contentType(MediaType.APPLICATION_JSON)
-                .content(objectWriter.writeValueAsString(building))).andExpect(status().isOk())
-                .andExpect(content().json(objectWriter.writeValueAsString(building)));
+            .content(objectWriter.writeValueAsString(building))).andExpect(status().isOk())
+            .andExpect(content().json(objectWriter.writeValueAsString(building)));
     }
 
     @Test
@@ -96,7 +96,7 @@ class BuildingControllerTest {
         doNothing().when(mockedBuildingService).deleteBuildingById(BUILDING_ID);
 
         // then
-        mockMvc.perform(delete(BUILDING_URL+BUILDING_ID)).andExpect(status().isOk());
+        mockMvc.perform(delete(BUILDING_URL + BUILDING_ID)).andExpect(status().isOk());
     }
 
     private Building createBuilding() {

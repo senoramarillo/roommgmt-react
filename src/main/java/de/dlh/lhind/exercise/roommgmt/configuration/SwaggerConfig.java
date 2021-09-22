@@ -19,18 +19,17 @@ public class SwaggerConfig {
     @Bean
     public Docket apiDocket() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("de.dlh.lhind.exercise.roommgmt.controller"))
-                .paths(PathSelectors.any()).build();
+            .apis(RequestHandlerSelectors.basePackage("de.dlh.lhind.exercise.roommgmt.controller"))
+            .paths(PathSelectors.any()).build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Room Management API").description("CRUD Operations")
-                .termsOfServiceUrl("Open Source").license("Free License").version("1.0").build();
+            .termsOfServiceUrl("Open Source").license("Free License").version("1.0").build();
     }
 
     @Bean
-    public HttpTraceRepository htttpTraceRepository()
-    {
+    public HttpTraceRepository htttpTraceRepository() {
         return new InMemoryHttpTraceRepository();
     }
 

@@ -1,5 +1,8 @@
 package de.dlh.lhind.exercise.roommgmt.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
+
 import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.model.Room;
 import de.dlh.lhind.exercise.roommgmt.repository.RoomRepository;
@@ -11,23 +14,17 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
-
 @ExtendWith(MockitoExtension.class)
 class RoomServiceTest {
 
-    private static final Long ROOM_ID = 1L;
-    public static final String ROOM_NUMBER = "001";
-    public static final Integer ROOM_SEATS = 10;
-    public static final Boolean PROJECTOR_PRESENT = true;
-
-    private static final Long BUILDING_ID = 1L;
     public static final String BUILDING_NUMBER = "001";
     public static final String BUILDING_DESCRIPTION_STRING = "Zentrale";
     public static final Boolean PUBLIC_ACCESS = true;
-
-
+    public static final String ROOM_NUMBER = "001";
+    public static final Integer ROOM_SEATS = 10;
+    public static final Boolean PROJECTOR_PRESENT = true;
+    private static final Long BUILDING_ID = 1L;
+    private static final Long ROOM_ID = 1L;
     @Mock
     private RoomRepository roomRepository;
     private RoomService roomService;
@@ -41,8 +38,8 @@ class RoomServiceTest {
     @DisplayName("Add new room")
     void shouldAdd_whenAddRoom_givenValidRoom() {
         // given
-        Room room = new Room();
         Building building = new Building();
+        Room room = new Room();
 
         building.setId(BUILDING_ID);
         building.setBuildingNumber(BUILDING_NUMBER);
@@ -69,7 +66,7 @@ class RoomServiceTest {
     @DisplayName("Get all rooms")
     void shouldFindAll_whenGetAllRooms() {
         // when
-        roomService.getAllRooms();
+        roomService.findAllRooms();
 
         // then
         verify(roomRepository).findAll();

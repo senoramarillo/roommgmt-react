@@ -1,5 +1,7 @@
 package de.dlh.lhind.exercise.roommgmt.service;
 
+import static org.mockito.Mockito.verify;
+
 import de.dlh.lhind.exercise.roommgmt.repository.MeetingRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -7,8 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class MeetingServiceTest {
@@ -26,7 +26,7 @@ class MeetingServiceTest {
     @DisplayName("Get all meetings")
     void shouldFindAll_whenGetAllRooms() {
         // when
-        meetingService.getAllMeetings();
+        meetingService.findAllMeetings();
 
         // then
         verify(meetingRepository).findAll();

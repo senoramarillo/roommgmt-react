@@ -1,5 +1,9 @@
 package de.dlh.lhind.exercise.roommgmt.controller;
 
+import static org.mockito.Mockito.doNothing;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import de.dlh.lhind.exercise.roommgmt.service.MeetingService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,15 +12,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.Mockito.doNothing;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @WebMvcTest(controllers = MeetingController.class)
 class MeetingControllerTest {
 
-    private static final Long MEETING_ID = 1L;
     public static final String MEETING_URL = "/meetings/";
+    private static final Long MEETING_ID = 1L;
     private static final Long ROOM_ID = 1L;
 
     @Autowired
@@ -32,7 +32,7 @@ class MeetingControllerTest {
         doNothing().when(mockedMeetingService).deleteMeetingById(ROOM_ID);
 
         // then
-        mockMvc.perform(delete(MEETING_URL+MEETING_ID)).andExpect(status().isOk());
+        mockMvc.perform(delete(MEETING_URL + MEETING_ID)).andExpect(status().isOk());
     }
 
 }

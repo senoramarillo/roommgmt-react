@@ -1,13 +1,13 @@
 package de.dlh.lhind.exercise.roommgmt.service;
 
 import de.dlh.lhind.exercise.roommgmt.exception.ResourceNotFoundException;
+import de.dlh.lhind.exercise.roommgmt.model.Building;
 import de.dlh.lhind.exercise.roommgmt.model.Room;
 import de.dlh.lhind.exercise.roommgmt.repository.RoomRepository;
+import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional
@@ -29,30 +29,34 @@ public class RoomService {
     }
 
     public void deleteRoomById(Long id) {
-        roomRepository.deleteRoomById(id);
+        roomRepository.deleteById(id);
     }
 
-    public Room getRoomById(String roomNumber) {
-        return roomRepository.getRoomById(roomNumber)
-                .orElseThrow(() -> new ResourceNotFoundException("Room by number " + roomNumber + " was not found"));
+    public Room findByRoomNumber(String roomNumber) {
+        return roomRepository.findByRoomNumber(roomNumber)
+            .orElseThrow(
+                () -> new ResourceNotFoundException(
+                    "Room by number " + roomNumber + " was not found"));
     }
 
-    public List<Room> getAllRooms() {
+    public List<Room> findAllRooms() {
         return roomRepository.findAll();
     }
 
-    public List<Object> geAllRoomsOfBuilding(String buildingNumber) {
-        return roomRepository.geAllRoomsOfBuilding(buildingNumber);
+    public List<Room> findAllRoomsOfBuilding(String buildingNumber) {
+        return roomRepository.findAllRoomsOfBuilding(buildingNumber);
     }
 
-    public Object getBuildingAndRoomById(String buildingNumber, String roomNumber) {
-        return roomRepository.getBuildingAndRoomById(buildingNumber, roomNumber)
-                .orElseThrow(() -> new ResourceNotFoundException
-                        ("Building or Room by buildingNumber " + buildingNumber + " roomNumber: " + roomNumber + " was not found"));
+    public Building findByBuildingAndRoomNumber(String buildingNumber, String roomNumber) {
+        return roomRepository.findByBuildingAndRoomNumber(buildingNumber, roomNumber)
+            .orElseThrow(() -> new ResourceNotFoundException
+                ("Building or Room by buildingNumber " + buildingNumber + " roomNumber: "
+                    + roomNumber
+                    + " was not found"));
     }
 
-    public List<Room> getPublicRooms() {
-        return roomRepository.getPublicRooms();
+    public List<Room> findPublicRooms() {
+        return roomRepository.findPublicRooms();
     }
 
 }

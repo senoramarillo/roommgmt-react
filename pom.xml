@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.8</version>
+        <version>2.5.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.dlh.lhind.training</groupId>
@@ -31,13 +31,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.6.8</version>
+            <version>2.5.12</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>2.6.8</version>
+            <version>2.5.0</version>
         </dependency>
 
         <dependency>
@@ -49,6 +49,7 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
+            <!--<scope>test</scope>-->
         </dependency>
 
         <dependency>

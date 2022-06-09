@@ -2,7 +2,7 @@
 
 <img src="https://i.imgur.com/qFK95sZ.png" width="250" />
 
-[![Build Status](https://travis-ci.com/senoramarillo/roommgmt-react.svg?branch=main)](https://travis-ci.com/senoramarillo/roommgmt-react)
+[![Build Status](https://app.travis-ci.com/senoramarillo/roommgmt-react.svg?branch=main)](https://app.travis-ci.com/senoramarillo/roommgmt-react)
 [![codecov](https://codecov.io/gh/senoramarillo/roommgmt-react/branch/main/graph/badge.svg?token=WG1PB5HL92)](https://codecov.io/gh/senoramarillo/roommgmt-react)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-react&metric=sqale_index)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-react&metric=coverage)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)

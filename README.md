@@ -26,7 +26,7 @@
 
 <img src="https://i.imgur.com/p60XyxC.jpg" width="850px" />
 
-[Spring Boot](https://spring.io/projects/spring-boot) version 2.5.12.
+[Spring Boot](https://spring.io/projects/spring-boot) version 2.5.12
 
 # Git Struktur
 * [./src/](src/) - Source code

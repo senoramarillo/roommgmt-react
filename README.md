@@ -1,4 +1,4 @@
-# Projekt "Room Management"
+# Project "Room Management"
 
 <img src="https://i.imgur.com/qFK95sZ.png" width="250" />
 
@@ -17,7 +17,7 @@
 
 [Docker Hub](https://hub.docker.com/r/senoramarillo/roommgmt-react)
 
-# Architektur
+# Architecture
 <img src="https://i.imgur.com/h6e6k95.png" width="350px" />
 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
@@ -28,46 +28,35 @@
 
 [Spring Boot](https://spring.io/projects/spring-boot) version 2.5.12
 
-# Git Struktur
+# Git structure
 * [./src/](src/) - Source code
 
-# Projektbeschreibung
+# Project description
 
-Dies ist das Basisprojekt für die "Room Management"-Übung. Ziel dieser Übung ist der Einsatz der in den vorherigen
-Schulungen vermittelten Inhalte zu den Themen Architektur und Entwicklung mit dem Spring-Framework. Dabei werden
-insbesondere die folgenden Technologien eingesetzt:
+This is the basic project for the "Room Management" exercise. The goal of this exercise is to apply the content taught in the previous courses on the topics of architecture and development with the Spring framework. In particular the following technologies in particular:
 
 * Spring Framework
   * Spring Boot
   * Spring REST
   * Spring Data JPA
 * JPA (Hibernate)
-* Unit-Tests mit JUnit, Mockito und AssertJ
+* Unit-Tests with JUnit, Mockito und AssertJ
 
-## Funktionale Anforderungen
+## Functional requirements
 
-Die finale Applikation soll eine klassische Stammdatenbearbeitung (CRUD) inkl. einiger Suchoperationen über eine
-REST-API anbieten.
+The final application should offer classic master data processing (CRUD) including some search operations via a REST API.
 
----
+The domain model consists of three entities:
+* `Building`: Represents a building.
+* `Room`: Represents a room. This is associated with a building.
+* `Meeting` (optional): Represents a meeting/lecture/event and is associated with a room. The required attributes of the entities are listed below.
 
-🚦 **Wichtig**: Die Implementierung der Entität `Meeting` ist ein optionaler Bestandteil.
+### Entity Building
 
----
-
-Das Domain-Model besteht aus drei Entitäten:
-* `Building`: Repräsentiert ein Gebäude
-* `Room`: Repräsentiert einen Raum. Dieser ist einem Gebäude zugeordnet.
-* `Meeting` (optional): Repräsentiert ein Meeting/Vortrag/Veranstaltung und ist einem Raum zugeordnet.
-
-Die erforderlichen Attribute der Entitäten werden nachfolgend aufgelistet.
-
-### Entität Building
-
-Ein Gebäude hat die folgenden natürlichen Attribute:
-* Gebäudenummer
-* Optionale Beschreibung
-* Ein Flag, ob ein öffentlicher Zugang möglich ist
+A building has the following natural attributes:
+* Building number
+* Optional description
+* A flag whether public access is possible.
 
 | Attribut        | Eigenschaften               |
 | --------------- | --------------------------- |
@@ -75,13 +64,13 @@ Ein Gebäude hat die folgenden natürlichen Attribute:
 | Description     | `String`, optional          |
 | Public Access   | `Boolean`, required         |
 
-### Entität Room
+### Entity Room
 
-Ein Raum hat die folgenden natürlichen Attribute:
-* Gebäude
-* Raumnummer
-* Anzahl Sitzplätze
-* Ein Flag, ob ein Beamer vorhanden ist
+A room has the following natural attributes:
+* Building
+* Room number
+* Number of seats
+* A flag whether a beamer is available
 
 | Attribut          | Eigenschaften                            |
 | ----------------- | ---------------------------------------- |
@@ -90,107 +79,106 @@ Ein Raum hat die folgenden natürlichen Attribute:
 | Seats             | `Integer`, required, zwischen 1 und 9999 |
 | Projector present | `Boolean`, required                      |
 
-Zusätzlich muss die Anwendung sicherstellen, dass die Kombination aus *Gebäude* und *Raumnummer* eindeutig ist.
+In addition, the application must ensure that the combination of building and room number is unique.
 
-### Entität Meeting (optional)
+### Entity Meeting (optional)
 
-Ein Meeting hat die folgenden natürlichen Attribute:
-* Raum
-* Betreff  
-* Start- und Endzeit
+A meeting has the following natural attributes:
+* Room
+* Subject  
+* Start and end time
 
-| Attribut | Eigenschaften       |
+| Attribut | Properties       |
 | ---------| ------------------- |
 | Room     | `Room`, required    |
 | Topic    | `String`, required  |
 | Start    | `Instant`, required |
 | End      | `Instant`, required |
 
-### Geforderte Funktionen
+### Required functions
 
-Die Anwendung soll die folgenden Funktionen über eine REST-API anbieten:
+The application shall provide the following functions via a REST API:
 
-* Gebäude
-  * Alle Gebäude auflisten
-  * Ein Gebäude anlegen, ändern und löschen
-  * Ein Gebäude über die Gebäudenummer suchen
-  * Alle Gebäude mit öffentlichem Zugang suchen
-* Raum
-  * Alle Räume auflisten
-  * Einen Raum anlegen, ändern und löschen
-  * Einen Raum über Gebäudenummer und Raumnummer suchen
-  * Alle Räume eines Gebäudes suchen
-  * Alle Räume mit öffentlichem Zugang suchen
-* Meeting (**optional**)
-  * Alle Meetings auflisten
-  * Ein Meeting anlegen, ändern und löschen
-  * Alle Meetings in einem bestimmten Zeitraum (von, bis) suchen
-  * Alle Meetings in einem Gebäude in einem bestimmten Zeitraum (von, bis) suchen
-  * Alle Meetings in einem Raum in einem bestimmten Zeitraum (von, bis) suchen
-  
-## Technische Anforderungen
+* Buildings
+  * List all buildings
+  * Create, modify and delete a building
+  * Search a building by building number
+  * Search all buildings with public access
+* Room
+  * List all rooms
+  * Create, modify and delete a room
+  * Search a room by building number and room number
+  * Search all rooms in a building
+  * Search all rooms with public access
+* Meeting
+  * List all meetings
+  * Create, modify and delete a meeting
+  * Search all meetings in a specific period (from, to)
+  * Search all meetings in a building in a specific time period (from, to)
+  * Search all meetings in a room in a specific time period (from, to)
 
-Zusätzlich zu den funktionalen Anforderungen sind die nachfolgend aufgelisteten technischen Anforderungen 
-zu erfüllen.
+## Technical requirements
+
+In addition to the functional requirements, the technical requirements listed below must be met.
+must be met.
 
 ### REST API
 
-Die Anwendung muss eine den üblichen REST-Standards folgende REST-API anbieten.
+The application must provide a REST API that follows common REST standards.
+Error handling is done through the use of HTTP status codes.
 
-Fehlerbehandlung erfolgt durch den Einsatz von HTTP-Statuscodes.
+### Layer architecture
 
-### Schichtenarchitektur
-
-Die Anwendung muss eine Drei-Schicht-Architektur implementieren:
+The application must implement a three-tier architecture:
 
 ```
   A[REST Controller] --> B[Service];
   B --> C[Repository];
 ```
 
-Die einzelnen Schichten sollen dabei auf Basis der folgenden Technologien entwickelt werden:
+The individual layers are to be developed on the basis of the following technologies:
 
 * REST Controller
-  * Spring REST Controller (Spring MVC)
+    * Spring REST Controller (Spring MVC)
 * Service
-  * Standard Spring Framework
+    * Standard Spring Framework
 * Repository
-  * Spring Data JPA
-  * Hibernate
+    * Spring Data JPA
+    * Hibernate
 * Database
-  * H2
+    * H2
 
-Es ist dabei erlaubt, ergänzende Technologien einzusetzen, solange diese nicht die oben aufgeführten Technologien
-ersetzen oder die Drei-Schicht-Architektur umgehen.
-  
-### Transaktionsbehandlung
+It is permitted to use complementary technologies as long as they do not replace the technologies listed above or bypass the
+or circumvent the three-layer architecture.
 
-Eine saubere Transaktionsbehandlung ist erforderlich. Wichtig ist dabei insbesondere, die Transaktionsklammer in der
-richtigen Schicht zu setzen (*Unit of Work*).
+### Transaction handling
+
+Clean transaction handling is required. In particular, it is important to set the transaction bracket in the correct
+correct layer (*Unit of Work*).
 
 ### Testing
 
-Unit-Tests werden idealerweise in jeder Schicht implementiert. 
+Unit tests are ideally implemented in each layer.
 
-Im Rahmen dieser Übung ist allerdings die Implementierung der Unit Tests nur für die *Controller* und die
-*Services* verpflichtend. Eine vollständige Testabdeckung aller Methoden ist für diese Übung nicht erforderlich.
+However, for the purposes of this exercise, the implementation of unit tests is only mandatory for the *Controllers* and the
+*Services* are mandatory. Full test coverage of all methods is not required for this exercise.
 
-Optional können Unit Tests natürlich auch für die *Repositories* gebaut werden.
+Optionally, unit tests can of course also be built for the *Repositories*.
 
-## Testen der Anwendung
+## Application testing
 
-Ein Testen der Anwendung ist jederzeit lokal in der IDE möglich. Hierzu einfach die Spring-Boot-Anwendung starten.
-Die IntelliJ generiert hierfür automatisch eine Run Configuration. Alternativ kann auch auf das *Play*-Symbol in
-der Main-Klasse `de.dlh.lhind.exercise.roommgmt.RoommmgmtApplication` geklickt werden.
+Testing of the application is possible at any time locally in the IDE. To do this, simply start the Spring boot application.
+IntelliJ automatically generates a run configuration for this purpose. Alternatively, you can also click on the *Play* icon in
+the main class `com.spring.roommgmt.RoomManagementApplication`.
 
-Das Testen der REST-API erfolgt am besten unter Einsatz von *HTTP Scratch-Files*. Diese können direkt in der IntelliJ
-angelegt werden.
+Testing the REST API is best done using *HTTP scratch files*. These can be created directly in the IntelliJ
+application.
 
 ## Available Scripts for React Frontend
 
 In the project directory, you can run:
 
-### `yarn start` ✅
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -198,12 +186,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test` ✅
+### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build` ✅
+### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.

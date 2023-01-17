@@ -8,7 +8,6 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-react&metric=coverage)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-react&metric=code_smells)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-react&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/senoramarillo/roommgmt-react.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/senoramarillo/roommgmt-react/context:javascript)
 
 # Demo
 [Room-Management](https://bit.ly/35Dz8Oy)

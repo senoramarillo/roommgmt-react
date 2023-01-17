@@ -29,7 +29,7 @@ public class SwaggerConfig {
     }
 
     @Bean
-    public HttpTraceRepository htttpTraceRepository() {
+    public HttpTraceRepository httpTraceRepository() {
         return new InMemoryHttpTraceRepository();
     }
 

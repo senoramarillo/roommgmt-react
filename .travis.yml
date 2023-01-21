@@ -6,6 +6,8 @@ addons:
     organization: senoramarillo
     token:
       secure: PvrLom4co9ki0L5Y0qDebsh2QlsSKozxP6ec+LzkmAPd3RNxfU/a159ou245PBt4b2cHDlH0X7FFKBV/vH3XQG+rrv/8QtjkRpjAZHzmVLKulFPiMjIoYHBW0dPFccMByUvwi4Zm2TVYwoxbsXKJS9g9sqLs6vJqNi2KIiK1M3uhQPT3g9PL7XbG+e9IHwPGCCL4omI2PoJg+jserhagc6ECtuYAvvcMMAWFnIOGtBM4xGRT1lD76zIo6EeRRmSR0uY+8WBAI2xxYJN6xkCAYU6HwJdgzeSrREwkkYIxG9L6Uz7rNE2I/6pRMP6UpPOgTLP8TUzCxiisU0gOAe7lHQWeJWMB26D5G7Wzmdk5DXJHOps7CacUoSEGcyTf1qdSqGxhTbl7gM1kWZ7XUv/0DpsjtSiclQ7Hh34Iewau6P0Zqd8wqb9VjHOVvAclR4n+wzXtTMjGpDUoHqf6vd5IZMPkRHXGBekdOAqNm+h1+fjiuKeH3p0rhfPGb87Pf9ptQ7l1+8nZ+HXkv1NdKmPvmmnxu2XVw6dBaEAIh9DoHaRhwtLEpJ7LQIUKOaWAvXH1OH1CMkaWKBCslGWoezSPw084pfZdPYxwDGJkMW4pRsteEvoxzASPaGB2UwWjNsTBA0c02GpkOdeQ9jY/Sp+GHsDRYYW4qIbOFedwztYYoIc=
+before_deploy:
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.8.0
 deploy:
   provider: heroku
   app: roommgmt-react

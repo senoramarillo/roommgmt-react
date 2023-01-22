@@ -8,6 +8,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-react&metric=coverage)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-react&metric=code_smells)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=senoramarillo_roommgmt-react&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=senoramarillo_roommgmt-react)
+[![License](https://img.shields.io/github/license/senoramarillo/roommgmt-react)](LICENSE)
 
 # Demo
 [Room-Management](https://bit.ly/35Dz8Oy)

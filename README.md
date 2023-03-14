@@ -12,9 +12,7 @@
 
 # Demo
 [Room-Management](https://bit.ly/35Dz8Oy)
-
 [Swagger UI](https://bit.ly/3cWyU9g)
-
 [Docker Hub](https://hub.docker.com/r/senoramarillo/roommgmt-react)
 
 # Architecture

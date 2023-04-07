@@ -49,12 +49,6 @@ insbesondere die folgenden Technologien eingesetzt:
 Die finale Applikation soll eine klassische Stammdatenbearbeitung (CRUD) inkl. einiger Suchoperationen über eine
 REST-API anbieten.
 
----
-
-**Wichtig**: Die Implementierung der Entität `Meeting` ist ein optionaler Bestandteil.
-
----
-
 Das Domain-Model besteht aus drei Entitäten:
 * `Building`: Repräsentiert ein Gebäude
 * `Room`: Repräsentiert einen Raum. Dieser ist einem Gebäude zugeordnet.
